@@ -13,7 +13,7 @@ How to use VCHam - a program to calculate the vibronic coupling Hamiltonian.
 
 In this example there are 30 normal modes and 5 electronic states.
 
-###### vcpnt
+#### vcpnt
 
 	vcpnt101 pnts.inp
 
@@ -49,7 +49,7 @@ Where,
 
 Then, run the generated g09 calculations (will take a while). 
 
-###### vctrans
+#### vctrans
 
 Next, use vctrans to transform the data from the g09 output files to nice format and for use in vchfit,
 
@@ -59,7 +59,7 @@ vctrans101 trans.inp
 
 As this must be done for every mode, use a template file such as 'trans_xx.inp', which contains 'xx' in place of where the mode number should be. Here's an example 'trans_xx.inp':
 
-	file0 = dabna-1_hpfreq.log
+	file0 = hpfreq.log
 	nmodes = 156
 	orient=Standard
 	abinitiotype =  tddft            #ttddft for triplets
@@ -68,11 +68,11 @@ As this must be done for every mode, use a template file such as 'trans_xx.inp',
 	order = 0
 	
 	files
-	dabna-1_pnts_xx_000.log 1
-	dabna-1_pnts_xx_000.log 2
-	dabna-1_pnts_xx_000.log 3
-	dabna-1_pnts_xx_000.log 4
-	dabna-1_pnts_xx_000.log 5
+	pnts_xx_000.log 1
+	pnts_xx_000.log 2
+	pnts_xx_000.log 3
+	pnts_xx_000.log 4
+	pnts_xx_000.log 5
 	end-files
 	
 	datasets
@@ -92,38 +92,38 @@ done
 
 The trans.inp files reference a 'q.set' file which is a list of g09 log files which VCHam reads from. Similarly, just use a template file 'qxx.set', e.g:
 
-	dabna-1_pnts_xx_10l.log 1
-	dabna-1_pnts_xx_10l.log 2
-	dabna-1_pnts_xx_10l.log 3
-	dabna-1_pnts_xx_10l.log 4
-	dabna-1_pnts_xx_10l.log 5
-	dabna-1_pnts_xx_09l.log 1
-	dabna-1_pnts_xx_09l.log 2
-	dabna-1_pnts_xx_09l.log 3
-	dabna-1_pnts_xx_09l.log 4
-	dabna-1_pnts_xx_09l.log 5
+	pnts_xx_10l.log 1
+	pnts_xx_10l.log 2
+	pnts_xx_10l.log 3
+	pnts_xx_10l.log 4
+	pnts_xx_10l.log 5
+	pnts_xx_09l.log 1
+	pnts_xx_09l.log 2
+	pnts_xx_09l.log 3
+	pnts_xx_09l.log 4
+	pnts_xx_09l.log 5
 	...
-	dabna-1_pnts_xx_01l.log 1
-	dabna-1_pnts_xx_01l.log 2
-	dabna-1_pnts_xx_01l.log 3
-	dabna-1_pnts_xx_01l.log 4
-	dabna-1_pnts_xx_01l.log 5
-	dabna-1_pnts_xx_10r.log 1
-	dabna-1_pnts_xx_10r.log 2
-	dabna-1_pnts_xx_10r.log 3
-	dabna-1_pnts_xx_10r.log 4
-	dabna-1_pnts_xx_10r.log 5
-	dabna-1_pnts_xx_09r.log 1
-	dabna-1_pnts_xx_09r.log 2
-	dabna-1_pnts_xx_09r.log 3
-	dabna-1_pnts_xx_09r.log 4
-	dabna-1_pnts_xx_09r.log 5
+	pnts_xx_01l.log 1
+	pnts_xx_01l.log 2
+	pnts_xx_01l.log 3
+	pnts_xx_01l.log 4
+	pnts_xx_01l.log 5
+	pnts_xx_10r.log 1
+	pnts_xx_10r.log 2
+	pnts_xx_10r.log 3
+	pnts_xx_10r.log 4
+	pnts_xx_10r.log 5
+	pnts_xx_09r.log 1
+	pnts_xx_09r.log 2
+	pnts_xx_09r.log 3
+	pnts_xx_09r.log 4
+	pnts_xx_09r.log 5
 	...
-	dabna-1_pnts_xx_01r.log 1
-	dabna-1_pnts_xx_01r.log 2
-	dabna-1_pnts_xx_01r.log 3
-	dabna-1_pnts_xx_01r.log 4
-	dabna-1_pnts_xx_01r.log 5
+	pnts_xx_01r.log 1
+	pnts_xx_01r.log 2
+	pnts_xx_01r.log 3
+	pnts_xx_01r.log 4
+	pnts_xx_01r.log 5
 	end-files
  
 Generate q1.set, q2.set, etc.,
@@ -150,7 +150,7 @@ To generate a 'trans.info' file for each mode. They can be plotted with vcplot, 
 vcplot101 trans_1.inp
 ```
 
-###### Fitting
+#### vcfit
 
 To fit the PECs along each normal mode, Fit-x-1.inp, Fit-x-2.inp and Fit-x-3.inp files must be used. Here is an example Fit-x-2.inp:
 
