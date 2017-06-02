@@ -220,7 +220,7 @@ done
 This works because fit_xx-1.inp is listed before fit_xx-2.inp which are both before fit_xx-3.inp in bash; try it by
 
 ```
-ls -l fit*.inp
+echo fit*.inp
 ```
 
 The fittings must be in order 1,2,3, because fit2 uses info from fit1 as a first guess, and fit3  uses fit2 as a first guess.
