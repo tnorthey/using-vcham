@@ -26,7 +26,7 @@ Here is an example pnts.inp file:
 	opening = open.dat
 	closing = close.dat
 	formout = gaussian
-	along 01 10 1.0
+	along = 01 10 1.0
 
 	end-input
 
@@ -186,14 +186,14 @@ To fit the PECs along each normal mode, Fit-x-1.inp, Fit-x-2.inp and Fit-x-3.inp
 
 This file involves the cpmode section which is the coupling between states. In this case, we have a molecule with C2 symmetry. The ground state (1) is always of symmetry A; in this case, the 1st excited singlet is of irrep B so the overall irrep is B because AuB = B (and AuA = A, and BuB = A). Thus, we have 'cpmode = 1 2 B', that is, irrep B between states 1 and 2 (ground and 1st excited singlet). Note the cpmode section is there only to speed up the fitting as it allows certain matrix elements to be 0 due to symmetry. We can omit the entire section and proceed, albeit slower computationally. A molecule of C1 symmetry for example has no advantage of cpmode. If that were the case, just omit the cpmode section. 
 
-We actually use three of these for different fitting algorithms, eventually obtaining a good final fit. They differ by lambdafit (fit01), then gammafit (fit02), then we fill out the diabatic_function section to use quartic terms (fit03),
+We actually use three of these for different fitting algorithms, eventually obtaining a good final fit. They differ by lambdafit (fit01), then gammafit (fit02), then we fill out the diabatic_function section for mode x to use quartic terms (fit03),
 
 	diabatic_function
-	01 1 quartic
-	01 2 quartic
-	01 3 quartic
-	01 4 quartic
-	01 5 quartic
+	x 1 quartic
+	x 2 quartic
+	x 3 quartic
+	x 4 quartic
+	x 5 quartic
 	end-define
 
 Also 'guess=' becomes uncommented for fit02 and fit03, using the corresponding previous fit as its guess.
